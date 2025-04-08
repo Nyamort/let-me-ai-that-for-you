@@ -4,12 +4,12 @@ import { useState } from 'react';
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Sparkles, Wand2, Copy, LogOut, ChevronDown, User } from "lucide-react";
+import { Sparkles, Wand2, Copy, LogOut, ChevronDown, User, ChevronUp } from "lucide-react";
 import { toast } from "sonner"
 import { Loader2 } from "lucide-react"
 import { useSession, signOut } from "next-auth/react";
 import { LoginDialog } from "@/components/auth/login-dialog";
-import { Sidebar, SidebarTrigger } from "@/components/ui/sidebar";
+import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenuButton, SidebarTrigger } from "@/components/ui/sidebar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -90,18 +90,19 @@ function App() {
   return (
     <div className="flex w-screen h-screen bg-gradient-to-b from-background to-secondary">
       <Sidebar>
-        <div className="flex flex-col gap-4">
+        <SidebarHeader />
+        <SidebarContent>
           {session && <PromptsList 
             onSelectPrompt={handleSelectPrompt} 
             onNewPrompt={handleNewPrompt} 
             key={refreshKey}
           />}
-        </div>
-        <div className="mt-auto border-t pt-4">
+        </SidebarContent>
+        <SidebarFooter>
           {session ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="w-full justify-between px-2">
+                <SidebarMenuButton>
                   <div className="flex items-center gap-2">
                     {session.user?.image ? (
                       <Image 
@@ -118,10 +119,10 @@ function App() {
                     )}
                     <span className="font-medium truncate">{session.user?.name}</span>
                   </div>
-                  <ChevronDown className="h-4 w-4" />
-                </Button>
+                  <ChevronUp className="ml-auto" />
+                </SidebarMenuButton>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-[--radix-popper-anchor-width]">
+              <DropdownMenuContent side='top' className="w-[var(--radix-popper-anchor-width)]">
                 <DropdownMenuItem onClick={handleLogout}>
                   <LogOut className="mr-2 h-4 w-4" />
                   <span>Log out</span>
@@ -131,7 +132,8 @@ function App() {
           ) : (
             <LoginDialog open={showLoginDialog} onOpenChange={setShowLoginDialog} />
           )}
-        </div>
+        </SidebarFooter>
+
       </Sidebar>
       <SidebarTrigger size='lg'/>
       
