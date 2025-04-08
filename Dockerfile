@@ -8,7 +8,7 @@ RUN \
   if [ -f package-lock.json ]; then npm ci; \
   elif [ -f pnpm-lock.yaml ]; then npm install -g pnpm && pnpm install; \
   elif [ -f yarn.lock ]; then yarn install --frozen-lockfile; \
-  else echo "Aucun fichier de verrouillage trouvé" && exit 1; \
+  else echo "No lockfile found." && exit 1; \
   fi
 COPY . .
 

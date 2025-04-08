@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Prompt Enhancer",
+  title: "Let me AI that for you",
   description: "Enhance your AI prompts with AI",
   icons: {
     icon: "/favicon.ico",
