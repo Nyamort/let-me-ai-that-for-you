@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Sparkles, Wand2, Copy, LogOut, ChevronDown, User, ChevronUp } from "lucide-react";
+import { Sparkles, Wand2, Copy, LogOut, User, ChevronUp } from "lucide-react";
 import { toast } from "sonner"
 import { Loader2 } from "lucide-react"
 import { useSession, signOut } from "next-auth/react";
