@@ -34,6 +34,7 @@ export default function RootLayout({
     <html lang="en">
       <head></head>
       <body
+        suppressHydrationWarning={true}
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SidebarProvider>

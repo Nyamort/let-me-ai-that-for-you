@@ -7,6 +7,7 @@ import { History, Trash2, Plus } from "lucide-react";
 import { toast } from "sonner";
 import { Prompt } from '@/lib/prompt-service';
 import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface PromptsListProps {
   onSelectPrompt: (prompt: Prompt) => void;
@@ -102,7 +103,16 @@ export function PromptsList({ onSelectPrompt, onNewPrompt }: PromptsListProps) {
                   className="w-full"
                 >
                   <History className="mr-2 h-4 w-4" />
-                  <span className="truncate w-[150px]">{prompt.originalText}</span>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <span className="truncate w-[150px]">{prompt.originalText}</span>
+                      </TooltipTrigger>
+                      <TooltipContent side='right'>
+                        <p className="max-w-[300px] break-words">{prompt.originalText}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
                 </SidebarMenuButton>
                 <button
                   onClick={() => handleDeletePrompt(prompt.id!)}
