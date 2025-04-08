@@ -82,17 +82,14 @@ export function PromptsList({ onSelectPrompt, onNewPrompt }: PromptsListProps) {
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Your Prompts</SidebarGroupLabel>
-      <div className="px-2 py-2">
-        <Button 
-          onClick={onNewPrompt} 
-          className="w-full mb-2" 
-          variant="outline"
-        >
-          <Plus className="mr-2 h-4 w-4" />
-          New Prompt
-        </Button>
-      </div>
+      <Button 
+        onClick={onNewPrompt} 
+        className="w-full mb-2" 
+        variant="outline"
+      >
+        <Plus className="mr-2 h-4 w-4" />
+        New Prompt
+      </Button>
       <ScrollArea className="h-[calc(100vh-16rem)]">
         <SidebarGroupContent>
           <SidebarMenu>
