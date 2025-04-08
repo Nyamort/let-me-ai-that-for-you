@@ -1,7 +1,7 @@
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../auth/[...nextauth]/route';
 import { getUserPrompts } from '@/lib/prompt-service';
 import { getUserByEmail } from '@/lib/user-service';
+import { authOptions } from '@/utils/authOption';
 
 export async function GET() {
     const session = await getServerSession(authOptions);
@@ -27,7 +27,6 @@ export async function GET() {
             });
         }
 
-        // Get user prompts
         const prompts = await getUserPrompts(user.id!);
         
         return new Response(JSON.stringify({ prompts }), {

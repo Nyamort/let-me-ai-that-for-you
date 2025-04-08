@@ -1,12 +1,12 @@
 import { NextRequest } from 'next/server';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../../auth/[...nextauth]/route';
 import { getPromptById, deletePrompt } from '@/lib/prompt-service';
 import { getUserByEmail } from '@/lib/user-service';
+import { authOptions } from '@/utils/authOption';
 
 export async function GET(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     const session = await getServerSession(authOptions);
     
@@ -20,7 +20,7 @@ export async function GET(
     }
 
     try {
-        const promptId = params.id;
+        const { id: promptId } = await params;
         
         const prompt = await getPromptById(promptId);
         
@@ -73,7 +73,7 @@ export async function GET(
 
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     const session = await getServerSession(authOptions);
     
@@ -87,7 +87,7 @@ export async function DELETE(
     }
 
     try {
-        const promptId = params.id;
+        const { id: promptId } = await params;
         
         const prompt = await getPromptById(promptId);
         

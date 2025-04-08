@@ -1,9 +1,9 @@
 import { NextRequest } from 'next/server';
 import { GoogleGenAI } from '@google/genai';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../auth/[...nextauth]/route';
 import { savePrompt } from '@/lib/prompt-service';
 import { saveUser } from '@/lib/user-service';
+import { authOptions } from '@/utils/authOption';
 
 export async function POST(request: NextRequest) {
     const session = await getServerSession(authOptions);
