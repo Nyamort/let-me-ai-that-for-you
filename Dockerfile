@@ -10,7 +10,6 @@ RUN \
   elif [ -f yarn.lock ]; then yarn install --frozen-lockfile; \
   else echo "Aucun fichier de verrouillage trouvé" && exit 1; \
   fi
-a
 COPY . .
 
 RUN npm run build
