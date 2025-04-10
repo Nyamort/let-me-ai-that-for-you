@@ -46,7 +46,7 @@ test('send prompt', async ({ page }) => {
   ]);
 
   await page.goto('http://localhost:3000/');
-  await page.waitForTimeout(1000);
+  await page.waitForTimeout(5000);
 
 
   console.log('debug1');
@@ -58,12 +58,9 @@ test('send prompt', async ({ page }) => {
   console.log('debug4');
   await button.click();
   console.log('debug5');
-  await page.waitForTimeout(1000);
-  console.log('debug6');
   await page.waitForResponse('http://localhost:3000/api/enhances');
-  console.log('debug7');
+  console.log('debug6');
   const text = await page.locator('div[data-slot=card]:nth-child(2) > div > p').textContent();
-  
   expect(text).not.toBe('');
   
 });
