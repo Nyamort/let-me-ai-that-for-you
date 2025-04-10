@@ -32,6 +32,7 @@ jobs:
 
 
   Deploy-Production:
+    needs: Test
     environment: production
     runs-on: ubuntu-latest
     steps:
