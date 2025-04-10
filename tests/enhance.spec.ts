@@ -54,7 +54,8 @@ test('send prompt', async ({ page }) => {
   
   await button.click();
 
-  await page.waitForSelector('div[data-slot=card]:nth-child(2)');
+  await page.waitForResponse('http://localhost:3000/api/enhance');
+
   const text = await page.locator('div[data-slot=card]:nth-child(2) > div > p').textContent();
   
   expect(text).not.toBe('');
