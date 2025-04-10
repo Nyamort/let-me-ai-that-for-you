@@ -73,6 +73,8 @@ export async function POST(request: NextRequest) {
         userId,
     });
 
+    console.log('Enhanced text:', enhancedText);
+
     return new Response(JSON.stringify({ 
         text: enhancedText,
         promptId,
