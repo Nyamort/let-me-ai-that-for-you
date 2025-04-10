@@ -15,8 +15,8 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
-      - name: Display NEXTAUTH_SECRET
-        run: echo "NEXTAUTH_SECRET: ${{ vars.NEXTAUTH_SECRET }}"
+      - name: Display all environment variables
+        run: env
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
