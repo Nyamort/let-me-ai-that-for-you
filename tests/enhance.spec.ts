@@ -48,16 +48,20 @@ test('send prompt', async ({ page }) => {
   await page.goto('http://localhost:3000/');
   await page.waitForTimeout(1000);
 
+
+  console.log('debug1');
   const textarea = page.getByPlaceholder('Enter your text here...');
+  console.log('debug2');
   await textarea.fill('This is a test prompt');
-
+  console.log('debug3');
   const button = page.getByText('Enhance');
-  
+  console.log('debug4');
   await button.click();
+  console.log('debug5');
   await page.waitForTimeout(1000);
-
+  console.log('debug6');
   await page.waitForResponse('http://localhost:3000/api/enhances');
-
+  console.log('debug7');
   const text = await page.locator('div[data-slot=card]:nth-child(2) > div > p').textContent();
   
   expect(text).not.toBe('');
