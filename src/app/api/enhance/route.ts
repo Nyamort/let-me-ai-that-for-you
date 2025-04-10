@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
     const userId = await saveUser({
         email: session.user?.email || '',
         name: session.user?.name || '',
-        image: session.user?.image || undefined,
+        image: session.user?.image || '',
     });
 
     // Save prompt to Firebase
