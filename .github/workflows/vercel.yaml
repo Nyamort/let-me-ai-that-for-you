@@ -10,12 +10,11 @@ on:
   push:
     branches:
       - main
-
-environment: production
-
+      
 jobs:
   Test:
     timeout-minutes: 60
+    environment: production
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -40,6 +39,7 @@ jobs:
 
   Deploy-Production:
     needs: Test
+    environment: production
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
