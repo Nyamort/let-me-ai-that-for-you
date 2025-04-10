@@ -54,8 +54,9 @@ test('send prompt', async ({ page }) => {
   const button = page.getByText('Enhance');
   
   await button.click();
+  await page.waitForTimeout(1000);
 
-  await page.waitForResponse('http://localhost:3000/api/enhance');
+  await page.waitForResponse('http://localhost:3000/api/enhances');
 
   const text = await page.locator('div[data-slot=card]:nth-child(2) > div > p').textContent();
   
