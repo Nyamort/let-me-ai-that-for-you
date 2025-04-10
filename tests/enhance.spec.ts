@@ -28,6 +28,7 @@ test('has title', async ({ page }) => {
 });
 
 test('send prompt', async ({ page }) => {
+  test.setTimeout(60000);
   const token = await encode({
     token: {
       sub: '123',
@@ -54,9 +55,7 @@ test('send prompt', async ({ page }) => {
   
   await button.click();
 
-  await page.waitForResponse('http://localhost:3000/api/enhance', {
-    timeout: 60000,
-  });
+  await page.waitForResponse('http://localhost:3000/api/enhance');
 
   const text = await page.locator('div[data-slot=card]:nth-child(2) > div > p').textContent();
   
