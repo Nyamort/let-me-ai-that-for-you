@@ -4,6 +4,7 @@ import { loadEnvConfig } from "@next/env";
 
 loadEnvConfig(process.cwd());
 
+
 test('has title', async ({ page }) => {
   const token = await encode({
     token: {
@@ -12,9 +13,6 @@ test('has title', async ({ page }) => {
     secret: process.env.NEXTAUTH_SECRET!,
   });
 
-  await page.goto('http://localhost:3000/');
-
-  // Set the auth token as a cookie
   await page.context().addCookies([
     {
       name: 'next-auth.session-token',
@@ -23,6 +21,8 @@ test('has title', async ({ page }) => {
       path: '/',
     }
   ]);
+
+  await page.goto('http://localhost:3000/');
 
   await expect(page).toHaveTitle(/Let me AI that for you/);
 });
@@ -35,8 +35,6 @@ test('send prompt', async ({ page }) => {
     secret: process.env.NEXTAUTH_SECRET!,
   });
 
-  await page.goto('http://localhost:3000/');
-
   await page.context().addCookies([
     {
       name: 'next-auth.session-token',
@@ -45,6 +43,9 @@ test('send prompt', async ({ page }) => {
       path: '/',
     }
   ]);
+
+  await page.goto('http://localhost:3000/');
+  await page.waitForTimeout(1000);
 
   const textarea = page.getByPlaceholder('Enter your text here...');
   await textarea.fill('This is a test prompt');
