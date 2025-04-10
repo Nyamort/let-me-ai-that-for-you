@@ -1,7 +1,6 @@
 import { POST } from './route';
 import { NextRequest } from 'next/server';
 import { getServerSession } from 'next-auth';
-import { GoogleGenAI } from '@google/genai';
 import { savePrompt } from '@/lib/prompt-service';
 import { saveUser } from '@/lib/user-service';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
