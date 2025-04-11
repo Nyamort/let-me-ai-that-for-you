@@ -37,8 +37,7 @@ export async function POST(request: NextRequest) {
     await writeApi.writePoint(point);
 
     return NextResponse.json({ success: true });
-  } catch (error) {
-    console.error('Error sending web vitals to InfluxDB:', error);
+  } catch {
     return NextResponse.json(
       { error: 'Failed to send web vitals data' },
       { status: 500 }
