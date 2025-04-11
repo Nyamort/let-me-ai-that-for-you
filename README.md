@@ -68,7 +68,7 @@ To authenticate users via GitHub, follow these steps to register an OAuth applic
       AUTH_GITHUB_SECRET=<your_github_client_secret>
       ```
 
-## Influx
+## Influx (Not necessary, only for send web vital data)
 
 To create a bucket in InfluxDB and obtain the necessary credentials, follow these steps:
 
