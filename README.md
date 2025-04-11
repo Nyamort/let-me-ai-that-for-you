@@ -119,3 +119,7 @@ To integrate Firebase into your project, follow these steps to obtain the requir
       FIREBASE_CLIENT_EMAIL=<your_firebase_client_email>
       FIREBASE_PROJECT_ID=<your_firebase_project_id>
       ```
+
+## License
+
+This project is licensed under the terms of the [LICENSE](LICENSE) file.
