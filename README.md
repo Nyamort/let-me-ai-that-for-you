@@ -6,7 +6,7 @@
 
 1. Clone the repository:
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/Nyamort/let-me-ai-that-for-you.git
     cd let-me-ai-that-for-you
     ```
 
